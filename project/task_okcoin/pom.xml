@@ -11,9 +11,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jbox.project</groupId>
-    <artifactId>okcoin_strategy</artifactId>
+    <artifactId>task_okcoin</artifactId>
 
-    <name>okcoin_strategy</name>
+    <name>task_okcoin</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -24,6 +24,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.jbox.common</groupId>
+            <artifactId>base</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>com.jbox.opensrc</groupId>
             <artifactId>okcoin</artifactId>

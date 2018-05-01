@@ -13,7 +13,7 @@
         <module>common/base</module>
         <module>opensrc/okcoin</module>
         <module>project/test</module>
-        <module>project/okcoin_strategy</module>
+        <module>project/task_okcoin</module>
     </modules>
 
     <properties>

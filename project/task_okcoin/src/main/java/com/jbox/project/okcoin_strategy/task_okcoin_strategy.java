@@ -1,4 +1,4 @@
-package com.jbox.project.okcoin_strategy;
+package com.jbox.project.task_okcoin;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;

@@ -26,6 +26,7 @@
         <module name="okcoin" />
         <module name="okcoin_strategy" />
         <module name="okex" />
+        <module name="task_okcoin" />
         <module name="test" />
       </profile>
     </annotationProcessing>
@@ -38,6 +39,7 @@
       <module name="okcoin_strategy" target="1.7" />
       <module name="okex" target="1.7" />
       <module name="outlib" target="1.5" />
+      <module name="task_okcoin" target="1.7" />
       <module name="test" target="1.7" />
     </bytecodeTargetLevel>
   </component>

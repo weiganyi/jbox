@@ -5,8 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/common/base/base.iml" filepath="$PROJECT_DIR$/common/base/base.iml" />
       <module fileurl="file://$PROJECT_DIR$/jbox.iml" filepath="$PROJECT_DIR$/jbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/opensrc/okcoin/okcoin.iml" filepath="$PROJECT_DIR$/opensrc/okcoin/okcoin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/project/okcoin_strategy/okcoin_strategy.iml" filepath="$PROJECT_DIR$/project/okcoin_strategy/okcoin_strategy.iml" />
       <module fileurl="file://$PROJECT_DIR$/outlib/outlib.iml" filepath="$PROJECT_DIR$/outlib/outlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project/task_okcoin/task_okcoin.iml" filepath="$PROJECT_DIR$/project/task_okcoin/task_okcoin.iml" />
       <module fileurl="file://$PROJECT_DIR$/project/test/test.iml" filepath="$PROJECT_DIR$/project/test/test.iml" />
     </modules>
   </component>
