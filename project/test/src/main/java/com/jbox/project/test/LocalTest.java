@@ -1,8 +1,11 @@
 package com.jbox.project.test;
 
+import com.jbox.common.base.XmlConfiger;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.dom4j.DocumentException;
 
+import java.io.IOException;
 import java.sql.*;
 
 /**
@@ -12,20 +15,23 @@ import java.sql.*;
 public class LocalTest {
     private static Logger logger = Logger.getLogger(LocalTest.class);
 
-    public static void main( String[] args ) {
-        //加载log4j配置文件
-        PropertyConfigurator.configure("log4j.properties");
+    private static XmlConfiger configer;
+
+    public static void MysqlTest() {
+        int ret = 0;
 
         //声明Connection对象
         Connection con;
         //驱动程序名
-        String driver = "com.mysql.jdbc.Driver";
+        String driver = configer.GetValue("test.db_info.driver");
         //URL指向要访问的数据库名
-        String url = "jdbc:mysql://172.16.32.11:3306/weigy";
+        String url = configer.GetValue("test.db_info.url");
         //MySQL配置时的用户名
-        String user = "root";
+        String user = configer.GetValue("test.db_info.user");
         //MySQL配置时的密码
-        String password = "Wgy008231";
+        String password = configer.GetValue("test.db_info.passwd");
+        //MySQL表名
+        String table = configer.GetValue("test.db_info.table");
 
         try {
             //加载驱动程序
@@ -37,9 +43,9 @@ public class LocalTest {
 
             //查询数据
             Statement statement = con.createStatement();
-            String sql = "select * from t_test";
+            String sql = "select * from "+table;
             ResultSet rs = statement.executeQuery(sql);
-            logger.debug("执行结果如下所示:");
+            logger.debug("查询结果如下所示:");
             logger.debug("t_key" + "\t" + "t_value");
             while(rs.next()){
                 String key = rs.getString("t_key");
@@ -49,21 +55,24 @@ public class LocalTest {
 
             java.sql.PreparedStatement psql;
             //增加数据
-            psql = con.prepareStatement("insert into t_test values(?,?)");
+            psql = con.prepareStatement("insert into "+table+" values(?,?)");
             psql.setString(1, "刘明");
             psql.setString(2, "总裁");
-            psql.executeUpdate();
+            ret = psql.executeUpdate();
+            logger.debug("insert ret:"+ret);
 
             //更新数据
-            psql = con.prepareStatement("update t_test set t_value=? where t_key=?");
+            psql = con.prepareStatement("update "+table+" set t_value=? where t_key=?");
             psql.setString(1, "副总裁");
             psql.setString(2, "刘明");
-            psql.executeUpdate();
+            ret = psql.executeUpdate();
+            logger.debug("update ret:"+ret);
 
             //删除数据
-            psql = con.prepareStatement("delete from t_test where t_key=?");
+            psql = con.prepareStatement("delete from "+table+" where t_key=?");
             psql.setString(1, "刘明");
-            psql.executeUpdate();
+            ret = psql.executeUpdate();
+            logger.debug("delete ret:"+ret);
             psql.close();
 
             rs.close();
@@ -71,7 +80,26 @@ public class LocalTest {
         } catch (Exception e) {
             logger.error("catch a Exception:"+e.getMessage());
         }finally{
-            logger.debug("数据库数据成功获取！！");
+            logger.debug("数据库操作成功！");
         }
+    }
+
+    public static void main( String[] args ) {
+        //加载log4j配置文件
+        PropertyConfigurator.configure("log4j.properties");
+
+        //加载项目xml配置文件
+        try {
+            configer = new XmlConfiger("./test.xml");
+        }catch (IOException e1) {
+            logger.error("new XmlConfiger catch a IOException:"+e1.getMessage());
+            return;
+        }catch (DocumentException e1) {
+            logger.error("new XmlConfiger catch a DocumentException:"+e1.getMessage());
+            return;
+        }
+
+        //mysql测试
+        MysqlTest();
     }
 }

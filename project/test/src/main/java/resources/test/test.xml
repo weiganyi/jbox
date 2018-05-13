@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test>
+    <db_info>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://172.16.32.11:3306/weigy</url>
+        <user>root</user>
+        <passwd>Wgy008231</passwd>
+        <table>t_test</table>
+    </db_info>
+</test>
