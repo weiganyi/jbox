@@ -31,6 +31,18 @@ public interface IStockRestApi {
 	public String depth(String symbol) throws HttpException, IOException;
 
 	/**
+	 * K线数据
+	 * @param symbol 币对如ltc_btc
+	 * @param type 1min/3min/5min/15min/30min/1day/3day/1week/1hour/2hour/4hour/6hour/12hour
+	 * @param size 指定获取数据的条数
+	 * @param since 时间戳，返回该时间戳以后的数据
+	 * @return
+	 * @throws IOException
+	 * @throws HttpException
+	 */
+	public String kline(String symbol, String type, Integer size, Long since) throws HttpException, IOException;
+
+	/**
 	 * 现货历史交易信息
 	 * @param symbol btc_usd:比特币    ltc_usd :莱特币
 	 * @param since 不加since参数时，返回最近的60笔交易

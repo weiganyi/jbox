@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import java.io.*;
 import java.util.Vector;
 
+import com.jbox.common.base.CommonUtils;
 
 /**
  * @author ganyiwei
@@ -49,8 +50,8 @@ public class task_okcoin_strategy {
 		client.DoInit();
 
 		try {
-			shutdownFile = CommonUtil.getClassName(this.getClass().getName())+".shutdown";
-			saveValuesFile = CommonUtil.getClassName(this.getClass().getName())+".json";
+			shutdownFile = CommonUtils.getClassName(this.getClass().getName())+".shutdown";
+			saveValuesFile = CommonUtils.getClassName(this.getClass().getName())+".json";
 
 			File f = new File(shutdownFile);	//创建控制退出的本地文件
 			f.createNewFile();

@@ -21,12 +21,6 @@ public class CommonUtil {
 		System.out.println(currTime+str);
 	}
 
-	public static String getClassName(String name) {
-		String[] field = name.split("\\.");
-		int size = field.length;
-		return field[size-1];
-	}
-
 	public static Double getDoubleScale(Double val, int scale) {
 		BigDecimal b = new BigDecimal(val);
 		return b.setScale(scale, BigDecimal.ROUND_HALF_UP).doubleValue();

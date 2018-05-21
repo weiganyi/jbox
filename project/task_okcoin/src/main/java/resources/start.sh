@@ -1,6 +1,3 @@
 #!/bin/sh
 
-export PATH=/usr/local/services/jdk1.7.0_45-1/jdk1.7.0_45/bin/:$PATH
-
-java -classpath jexchange.jar com.strategy.Strategy1 >> Strategy1.log &
-
+java -cp task_okcoin-1.0-SNAPSHOT-jar-with-dependencies com.jbox.project.task_okcoin.task_okcoin_strategy start >> task_okcoin_strategy.log &

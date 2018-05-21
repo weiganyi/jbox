@@ -40,7 +40,12 @@ public class StockRestApi implements IStockRestApi{
 	 * 现货市场深度URL
 	 */
 	private final String DEPTH_URL = "/api/v1/depth.do?";
-	
+
+	/**
+	 * K线数据
+	 */
+	private final String KLINE_URL = "/api/v1/kline.do?";
+
 	/**
 	 * 现货历史交易信息URL
 	 */
@@ -107,6 +112,38 @@ public class StockRestApi implements IStockRestApi{
 		}
 		String result = httpUtil.requestHttpGet(url_prex, this.DEPTH_URL, param);
 	    return result;
+	}
+
+	@Override
+	public String kline(String symbol, String type, Integer size, Long since) throws HttpException, IOException {
+		HttpUtilManager httpUtil = HttpUtilManager.getInstance();
+		String param = "";
+		if(!StringUtil.isEmpty(symbol )) {
+			if(!param.equals("")) {
+				param += "&";
+			}
+			param += "symbol=" + symbol;
+		}
+		if(!StringUtil.isEmpty(type )) {
+			if(!param.equals("")) {
+				param += "&";
+			}
+			param += "type=" + type;
+		}
+		if(size != 0) {
+			if(!param.equals("")) {
+				param += "&";
+			}
+			param += "size=" + size;
+		}
+		if(since != 0) {
+			if(!param.equals("")) {
+				param += "&";
+			}
+			param += "since=" + since;
+		}
+		String result = httpUtil.requestHttpGet(url_prex, this.KLINE_URL, param);
+		return result;
 	}
 
 	@Override

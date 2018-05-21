@@ -1,4 +1,4 @@
 #!/bin/sh
 
-rm Strategy1.shutdown
+rm task_okcoin_strategy.shutdown
 

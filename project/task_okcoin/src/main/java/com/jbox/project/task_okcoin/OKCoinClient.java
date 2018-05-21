@@ -50,7 +50,7 @@ public class OKCoinClient {
 	public TickerResult DoTicker() throws HttpException, IOException {
 		//查询现货行情
 		String result = stockGet.ticker("btc_cny");
-		//CommonUtil.Log("OKCoinClient::DoTicker() result:" + result);
+		//CommonUtils.Log("OKCoinClient::DoTicker() result:" + result);
 
 		JSONObject jsonResult = JSONObject.parseObject(result);
 		if (!jsonResult.isEmpty()) {
@@ -79,7 +79,7 @@ public class OKCoinClient {
 	public boolean DoBuyMarket(Double dCurrPrice) throws HttpException, IOException {
 		//现货下单交易买入
 		//String result = stockPost.trade("btc_cny", "buy_market", "300", null);
-		//CommonUtil.Log("OKCoinClient::DoBuyMarket() result:"+result);
+		//CommonUtils.Log("OKCoinClient::DoBuyMarket() result:"+result);
 
 		CommonUtil.Log("OKCoinClient::DoBuyMarket() dCurrPrice:"+dCurrPrice);
 		dBuyPrice = dCurrPrice;
@@ -91,7 +91,7 @@ public class OKCoinClient {
 	public boolean DoSellMarket(Double dCurrPrice) throws HttpException, IOException {
 		//现货下单交易卖出
 		//String result = stockPost.trade("btc_cny", "sell_market", null, "0.01");
-		//CommonUtil.Log("OKCoinClient::DoSellMarket() result:"+result);
+		//CommonUtils.Log("OKCoinClient::DoSellMarket() result:"+result);
 
 		CommonUtil.Log("OKCoinClient::DoSellMarket() dCurrPrice:"+dCurrPrice);
 		dProfit += (dCurrPrice - dBuyPrice);
