@@ -25,47 +25,47 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.7</version>
         </dependency>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.2</version>
         </dependency>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.0.4</version>
         </dependency>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.1.23</version>
         </dependency>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.3.6</version>
         </dependency>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>httpcore</artifactId>
             <version>4.3.3</version>
         </dependency>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>2.0.2</version>
         </dependency>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>jackson-core</artifactId>
             <version>2.0.2</version>
         </dependency>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.0.2</version>
         </dependency>

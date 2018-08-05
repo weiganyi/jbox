@@ -25,32 +25,32 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.27</version>
         </dependency>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.12</version>
         </dependency>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.6.6</version>
         </dependency>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.6.6</version>
         </dependency>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>jaxen</artifactId>
             <version>1.1.6</version>
         </dependency>
         <dependency>
-            <groupId>com.jbox.outlib</groupId>
+            <groupId>com.jbox.openlib</groupId>
             <artifactId>dom4j</artifactId>
             <version>1.6.1</version>
         </dependency>

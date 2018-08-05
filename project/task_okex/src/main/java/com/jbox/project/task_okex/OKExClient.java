@@ -19,8 +19,8 @@ public class OKExClient {
 	private IStockRestApi stockPost;
 
 	public boolean DoInit() {
-		String api_key = "c2d2d92c-5959-4b0f-a4f0-27437a7efe43";  //OKCoin申请的apiKey
-		String secret_key = "FCC3EB0BDF8B702B4351E81B36CF4031";  //OKCoin 申请的secret_key
+		String api_key = "e0e698e9-7783-4942-a5ad-c319fa695c74";  //OKCoin申请的apiKey
+		String secret_key = "708AF8CEF6C6B4F2098E2AE286C15CFA";  //OKCoin 申请的secret_key
 		String url_prex = "https://www.okex.com";  //注意：请求URL 国际站https://www.okcoin.com ; 国内站https://www.okcoin.cn
 
 		/**
