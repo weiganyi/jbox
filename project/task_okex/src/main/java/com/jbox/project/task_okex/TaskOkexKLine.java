@@ -2,6 +2,7 @@ package com.jbox.project.task_okex;
 
 import com.alibaba.fastjson.JSONArray;
 import com.jbox.common.base.CommonUtils;
+import com.jbox.common.base.MailUtils;
 import com.jbox.common.base.TimeUtils;
 import com.jbox.common.base.XmlConfiger;
 import com.jbox.project.task_okex.bean.KLineBean;
@@ -105,7 +106,7 @@ public class TaskOkexKLine {
 		return true;
 	}
 
-	private void GetKline(String symbol) {
+	private boolean GetKline(String symbol) {
 		//获取kline数据
 		String result;
 		try {
@@ -116,7 +117,7 @@ public class TaskOkexKLine {
 			result = client.GetKline(symbol, "1min", 3, lTime);
 		}catch (Exception e) {
 			logger.error(symbol+" catch a Exception:"+e.getMessage());
-			return;
+			return false;
 		}
 		logger.info(symbol+" result:"+result);
 
@@ -135,37 +136,84 @@ public class TaskOkexKLine {
 					bean.setfVol(jsonResult.getFloat(5));
 				}catch (Exception e) {
 					logger.error(symbol+" catch a Exception:"+e.getMessage());
-					return;
+					return false;
 				}
 
 				//写入mysql
 				String table = tablePrefix+"kline_"+symbol;
-				InsertRecord(table, bean);
+				return InsertRecord(table, bean);
 			}else {
 				logger.error(symbol+" jsonResult.size():"+jsonResult.size());
+				return false;
 			}
 		}else {
 			logger.error(symbol+" jsonResults.size():"+jsonResults.size());
+			return false;
 		}
 	}
 
 	private boolean run() {
-		logger.info("enter");
+		int iMaxFailNum = 10;
+		int iLtcBtcFailNum = 0;
+		int iEthBtcFailNum = 0;
+		int iEtcBtcFailNum = 0;
+		int iBchBtcFailNum = 0;
+		int iEosBtcFailNum = 0;
 
+		logger.info("enter");
 		while (true) {
 			File f = new File(shutdownFile);    //判断是否退出
 			if (!f.exists()) {
 				break;
 			}
 
-			GetKline("ltc_btc");
-			GetKline("eth_btc");
-			GetKline("etc_btc");
-			GetKline("bch_btc");
-			GetKline("eos_btc");
+			if (!GetKline("ltc_btc")) {
+				if (++iLtcBtcFailNum > iMaxFailNum) {
+					MailUtils.notice(logger, "TaskOkexKLine ltc_btc fail", "");
+					iLtcBtcFailNum = 0;
+				}
+			}else {
+				iLtcBtcFailNum = 0;
+			}
+
+			if (!GetKline("eth_btc")) {
+				if (++iEthBtcFailNum > iMaxFailNum) {
+					MailUtils.notice(logger, "TaskOkexKLine eth_btc fail", "");
+					iEthBtcFailNum = 0;
+				}
+			}else {
+				iEthBtcFailNum = 0;
+			}
+
+			if (!GetKline("etc_btc")) {
+				if (++iEtcBtcFailNum > iMaxFailNum) {
+					MailUtils.notice(logger, "TaskOkexKLine etc_btc fail", "");
+					iEtcBtcFailNum = 0;
+				}
+			}else {
+				iEtcBtcFailNum = 0;
+			}
+
+			if (!GetKline("bch_btc")) {
+				if (++iBchBtcFailNum > iMaxFailNum) {
+					MailUtils.notice(logger, "TaskOkexKLine bch_btc fail", "");
+					iBchBtcFailNum = 0;
+				}
+			}else {
+				iBchBtcFailNum = 0;
+			}
+
+			if (!GetKline("eos_btc")) {
+				if (++iEosBtcFailNum > iMaxFailNum) {
+					MailUtils.notice(logger, "TaskOkexKLine eos_btc fail", "");
+					iEosBtcFailNum = 0;
+				}
+			}else {
+				iEosBtcFailNum = 0;
+			}
 
 			try {
-				Thread.sleep(5*1000); //5s
+				Thread.sleep(10*1000); //10s
 			} catch (InterruptedException e) {
 				logger.error(e.getMessage());
 			}

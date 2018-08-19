@@ -1,5 +1,6 @@
 package com.jbox.project.test;
 
+import com.jbox.common.base.MailUtils;
 import com.jbox.common.base.TimeUtils;
 import com.jbox.common.base.XmlConfiger;
 import org.apache.log4j.Logger;
@@ -108,6 +109,9 @@ public class LocalTest {
         logger.info("Date2TimeStamp:"+TimeUtils.Date2TimeStamp("2018-01-19 05:28:07"));
 
         //mysql测试
-        MysqlTest();
+        //MysqlTest();
+
+        //邮件通知测试
+        MailUtils.notice(logger, "this is a test fail", "");
     }
 }
