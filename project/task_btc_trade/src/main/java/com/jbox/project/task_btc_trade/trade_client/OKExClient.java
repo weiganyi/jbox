@@ -36,9 +36,14 @@ public class OKExClient {
 		return true;
 	}
 
-	public String GetKline(String symbol, String type, Integer size, Long since) throws IOException, HttpException {
+	public String kline(String symbol, String type, Integer size, Long since) throws IOException, HttpException {
 		//获取k线数据
 		return stockGet.kline(symbol, type, size, since);
+	}
+
+	public String trade(String symbol, String type, String price, String amount) throws IOException, HttpException {
+		//获取k线数据
+		return stockGet.trade(symbol, type, price, amount);
 	}
 }
 

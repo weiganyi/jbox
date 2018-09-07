@@ -1,7 +1,11 @@
 package com.jbox.project.task_btc_trade.trade_stratage.follow;
 
 import com.jbox.common.base.CommonUtils;
+import com.jbox.project.task_btc_trade.trade_action.ITradeActionApi;
+import com.jbox.project.task_btc_trade.trade_action.impl.OkexTradeActionApi;
 import com.jbox.project.task_btc_trade.trade_client.OKExClient;
+import com.jbox.project.task_btc_trade.trade_data.ITradeDataApi;
+import com.jbox.project.task_btc_trade.trade_data.impl.okex.OkexRealTimeTradeDataApi;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -14,13 +18,14 @@ import java.io.*;
 public class FollowStratage1 {
 	private static Logger logger = Logger.getLogger(FollowStratage1.class);
 
-	private OKExClient client = new OKExClient();
-
 	private String shutdownFile;
 
-	public FollowStratage1() {
-		client.DoInit();
+	private OKExClient client = new OKExClient();
 
+	private ITradeDataApi dataApi;
+	private ITradeActionApi actionApi;
+
+	public FollowStratage1() {
 		//创建控制退出的本地文件
 		try {
 			shutdownFile = CommonUtils.getClassName(this.getClass().getName())+".shutdown";
@@ -30,6 +35,13 @@ public class FollowStratage1 {
 		} catch (Exception e) {
 			logger.error(e.getStackTrace().toString());
 		}
+
+		//okex客户端初始化
+		client.DoInit();
+
+		//交易api初始化
+		dataApi = new OkexRealTimeTradeDataApi(client, logger);
+		actionApi = new OkexTradeActionApi(client, logger);
 	}
 
 	private boolean run() {
