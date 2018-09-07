@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<task_btc_trade>
+    <db_info>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://gz-cdb-0vdo7jco.sql.tencentcdb.com:62768/weigy</url>
+        <user>root</user>
+        <passwd>Wgy008231</passwd>
+        <table_prefix>o_</table_prefix>
+    </db_info>
+</task_btc_trade>

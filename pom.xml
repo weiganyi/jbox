@@ -15,6 +15,7 @@
         <module>project/test</module>
         <module>project/task_okcoin</module>
         <module>project/task_okex</module>
+        <module>project/task_btc_trade</module>
     </modules>
 
     <properties>
